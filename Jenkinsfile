@@ -8,7 +8,7 @@ pipeline{
         }
         stage('QA_Deploy'){
             steps{
-                sh " scp -o StrictHostKeyChecking=no index.html root@3.109.132.1:/var/www/html/"
+                echo "Deploting to QA"
             }
         }
     }
