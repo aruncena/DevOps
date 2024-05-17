@@ -1,0 +1,23 @@
+trigger:
+ - master
+pool:
+ name: local
+ demands: 
+ - Agent.Name -equals amazonliux
+stages:
+  - stage: Build
+    jobs:
+    - job:
+      steps:
+       - script: echo "Build Stage"
+  - stage: Test
+    jobs:
+    - job:
+      steps:
+      - script: echo "Test Stage"
+  - stage: Deploy
+    condition: succeeded('Test')
+    jobs:
+    - job: 
+      steps:
+      - script: echo "Deploy to Prod"    
