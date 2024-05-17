@@ -14,7 +14,7 @@ stages:
     jobs:
     - job:
       steps:
-      - script: echo "Test Stage"
+      - script: ech "Test Stage"
   - stage: Deploy
     condition: succeeded('Test')
     jobs:
