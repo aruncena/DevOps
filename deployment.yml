@@ -13,4 +13,4 @@ stages:
           deploy:
             steps:
               - checkout: self
-              - script: "Deploying to Prod"
+              - script: echo "Deploying to Prod"
