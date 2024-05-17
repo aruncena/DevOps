@@ -1,0 +1,16 @@
+trigger: none
+pool:
+ name: 'local'
+ demands: 
+ - Agent.Name -equals amazonliux
+stages:
+ - stage: 
+   jobs:
+     - deployment: Test
+       environment: Test
+       strategy:
+        runOnce:
+          deploy:
+            steps:
+              - checkout: self
+              - script: "Deploying to Prod"
