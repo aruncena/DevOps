@@ -16,7 +16,7 @@ stages:
       steps:
       - script: ech "Test Stage"
   - stage: Deploy
-    condition: succeeded('Test')
+    condition: failed()
     jobs:
     - job: 
       steps:
