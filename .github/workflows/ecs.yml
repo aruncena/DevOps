@@ -26,7 +26,7 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t ${{ secrets.ECR_REPOSITORY }}:${{ github.sha }} .
+          docker build -t myimage:v1 .
 
       - name: Log in to Amazon ECR
         uses: aws-actions/amazon-ecr-login@v1
