@@ -28,6 +28,13 @@ jobs:
         run: |
           docker build -t myimage:v1 .
 
+      - name: Set up AWS CLI
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}    
+
       - name: Log in to Amazon ECR
         uses: aws-actions/amazon-ecr-login@v1
         with:
@@ -39,13 +46,6 @@ jobs:
         run: |
           docker tag myimage:v1 861923434973.dkr.ecr.ap-south-1.amazonaws.com/nginx:v1
           docker push 861923434973.dkr.ecr.ap-south-1.amazonaws.com/nginx:v1
-
-      - name: Set up AWS CLI
-        uses: aws-actions/configure-aws-credentials@v2
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.AWS_REGION }}
 
       - name: Update ECS service
         run: |
